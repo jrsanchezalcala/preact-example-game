@@ -3,6 +3,7 @@ services:
   preact-boilerplate:
     working_dir: /app
     build: .
+    user: pptruser
     command: npm run dev:watch
     volumes:
       - ./:/app

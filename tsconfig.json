@@ -7,8 +7,10 @@
 		"noImplicitAny": false,
 		"removeComments": true,
 		"sourceMap": true,
-		"jsx": "react",
-		"jsxFactory": "h"
+	    "jsx": "react-jsx",
+		"jsxImportSource": "preact",
+		"esModuleInterop": true
+
 	},
 	"suppressImplicitAnyIndexErrors": true,
 	"lib": [

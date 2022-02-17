@@ -19,5 +19,5 @@ export function router(location: Location): JSX.Element {
 
 	const route: { content: () => JSX.Element } = routes[path];
 
-	return route ? route.content() : <NotFound/>;
+	return route ? route.content() : <NotFound/>; 
 }

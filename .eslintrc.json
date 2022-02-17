@@ -28,9 +28,12 @@
 		"sonarjs",
 		"@typescript-eslint"
 	],
+	
 	"rules": {
+		"allowDeclarations" : true,
+	"allowDefinitionFiles" : true,
 		"no-shadow": [
-			"error",
+			"warn",
 			{
 				"builtinGlobals": false
 			}
@@ -197,6 +200,8 @@
 		"sonarjs/cognitive-complexity": [
 			"warn",
 			32
-		]
+		],
+		"typescript-eslint/no-namespace" : "off",
+		"no-namespace" : "off"
 	}
 }
