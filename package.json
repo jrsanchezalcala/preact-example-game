@@ -1,0 +1,63 @@
+{
+	"name": "preact-example-game",
+	"version": "1.0.0",
+	"description": "Preact Example Game",
+	"scripts": {
+		"build": "npm run clean && webpack --config ./webpack.config.js --mode production --progress",
+		"postbuild": "react-snap",
+		"dev": "npm run clean && webpack --config ./webpack.config.js --mode development",
+		"dev:watch": "npm run clean && webpack --config ./webpack.config.js --mode development --watch",
+		"start": "webpack serve --config ./webpack.config.js --mode development --host 0.0.0.0",
+		"clean": "rimraf ./dist",
+		"fix:lint" : ""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jrsanchezalcala/preact-example-game"
+	},
+	"keywords": [
+		
+	],
+	"alias": {
+		"preact": "./node_modules/preact/dist/preact.min.js"
+	},
+	"author": "jrsanchezalcala@gmail.com",
+	"license": "MIT",
+	"dependencies": {
+		"preact": "^10.5.13",
+		"preact-custom-element": "^4.2.1"
+	},
+	"devDependencies": {
+		"@types/webpack": "^4.41.26",
+		"@typescript-eslint/eslint-plugin": "^4.17.0",
+		"@typescript-eslint/parser": "^4.17.0",
+		"copy-webpack-plugin": "^8.0.0",
+		"css-loader": "^5.1.2",
+		"eslint": "^7.21.0",
+		"eslint-config-standard-preact": "^1.1.6",
+		"eslint-loader": "^4.0.2",
+		"eslint-plugin-optimize-regex": "^1.2.0",
+		"eslint-plugin-preact": "^0.1.0",
+		"eslint-plugin-promise": "^4.3.1",
+		"eslint-plugin-sonarjs": "^0.6.0",
+		"file-loader": "^6.2.0",
+		"less": "^4.1.1",
+		"less-loader": "^8.0.0",
+		"less-plugin-clean-css": "^1.5.1",
+		"optimize-css-assets-webpack-plugin": "^5.0.4",
+		"react-snap": "^1.23.0",
+		"rimraf": "^3.0.2",
+		"ts-loader": "^8.0.18",
+		"typescript": "^4.2.3",
+		"webpack": "^5.26.1",
+		"webpack-cli": "^4.5.0",
+		"webpack-dev-server": "^3.11.2"
+	},
+	"reactSnap": {
+		"source": "dist",
+		"puppeteerArgs": [
+			"--no-sandbox",
+			"--disable-setuid-sandbox"
+		]
+	}
+}
