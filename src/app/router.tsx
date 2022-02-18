@@ -1,5 +1,5 @@
 import {h, JSX} from 'preact';
-import {Home} from './components/pages/Home';
+import {GameProps} from './components/pages/Game';
 import {NotFound} from './NotFound';
 
 
@@ -9,7 +9,7 @@ type TRoute = {
 
 const routes: Record<string, TRoute> = {
 	'': {
-		content: () => <Home/>
+		content: () => <x-game/>
 	}
 };
 
@@ -19,5 +19,5 @@ export function router(location: Location): JSX.Element {
 
 	const route: { content: () => JSX.Element } = routes[path];
 
-	return route ? route.content() : <NotFound/>; 
+	return route ? route.content() : <NotFound/>;
 }

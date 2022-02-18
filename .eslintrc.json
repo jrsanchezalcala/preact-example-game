@@ -30,8 +30,7 @@
 	],
 	
 	"rules": {
-		"allowDeclarations" : true,
-	"allowDefinitionFiles" : true,
+
 		"no-shadow": [
 			"warn",
 			{
