@@ -29,10 +29,10 @@ export const TopSection: FunctionComponent<TopSectionProps> = ({
   const [open, setOpen] = useState<boolean>(false);
   const [filterItems, setFilterItems] = useState<ArrayFilterItem>([]);
   return (
-    <Fragment>
-      <x-title>{title}</x-title>
+    <div class="top-section">
+      <x-title text={title} />
       <x-filter title={"SORT GAMES"} items={filterItems} />
-    </Fragment>
+    </div>
   );
 };
 register(TopSection, "x-top-section");

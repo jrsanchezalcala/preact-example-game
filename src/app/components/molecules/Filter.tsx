@@ -36,12 +36,13 @@ export const Filter: FunctionalComponent<FilterProps> = ({
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <Fragment>
+    <div class="filter">
       <x-filter-bar title={title} open={false} />
-      {items.map((item) => {
-        <x-filter-item text={item.text} value={item.value} />;
-      })}
-    </Fragment>
+      {items &&
+        items.map((item) => {
+          <x-filter-item text={item.text} value={item.value} />;
+        })}
+    </div>
   );
 };
 register(Filter, "x-filter", ["items", "title", "onChange"]);

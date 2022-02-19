@@ -1,3 +1,88 @@
 @import (inline) "normalize.css";
 
-@baseDistance: 7px;
+//vars
+@font-face {
+  font-family: Daxline Pro;
+  src: url("../DaxlinePro-ExtraBold.ttf");
+  //TODO - add other font formats
+}
+
+@title_color: #b6b7c0;
+@text_color: #747885;
+@sep_color: #cccdd9;
+@background_color: linear-gradient(270deg, #1f263a 0%, #353b4d 100%);
+@background_color_secondary: #131b2f;
+@background_color_buttons: linear-gradient(90deg, #a5cd28 0%, #69a507 100%);
+@base_distance: 7px;
+@small-width: 320px;
+@middle-width: 768px;
+@big-width: 1280px;
+
+.title {
+  color: @title_color;
+  font-family: Daxline Pro;
+  font-style: normal;
+  font-weight: 900;
+}
+
+x-game {
+  width: 100%;
+}
+x-game-template {
+  //width: 100%;
+  .main {
+    padding: 23px 24px;
+    box-sizing: border-box;
+  }
+  .page {
+    background: @background_color;
+  }
+  @media screen and (min-width: @middle-width) {
+    .page {
+      padding: 19px 65px;
+    }
+  }
+}
+
+x-top-section {
+  .top-section {
+    //width: 100%;
+    padding: @base_distance;
+  }
+  .title {
+    font-size: 21px;
+  }
+}
+
+x-title {
+  h1 {
+  }
+}
+
+x-filter {
+  .filter {
+    background: @background_color_secondary;
+    color: @title_color;
+    width: 135px;
+    padding: 4px @base_distance;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  x-filter-bar {
+    .icon {
+      color: @text_color;
+    }
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .title {
+      font-size: 14px;
+      padding-top: 6px;
+    }
+  }
+
+  x-filter-item {
+  }
+}

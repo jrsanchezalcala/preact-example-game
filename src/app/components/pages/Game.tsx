@@ -1,12 +1,12 @@
 import { h, JSX } from "preact";
 import register from "preact-custom-element";
-import { TopSectionProps } from "../organisms/TopSection";
-import "../organisms/TopSection";
-
+import { GameTemplateProps } from "../templates/GameTemplate";
+import "../templates/GameTemplate";
+import data from "../../../mocks/test-data.js";
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-top-section"]: TopSectionProps;
+      ["x-game-template"]: GameTemplateProps;
     }
   }
 }
@@ -14,10 +14,6 @@ declare global {
 export interface GameProps {}
 
 export const Game = (): JSX.Element => {
-  return (
-    <div>
-      <x-top-section title={"LOTTOLAND GAMES"} /> ;
-    </div>
-  );
+  return <x-game-template title={"LOTTOLAND GAMES"} data={data} />;
 };
 register(Game, "x-game");
