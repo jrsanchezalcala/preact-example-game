@@ -1,8 +1,8 @@
 import { h } from "preact";
 import { render, fireEvent, screen } from "@testing-library/preact";
 
-import { FilterBarProps } from "../src/app/components/atoms/FilterBar";
-import "../src/app/components/atoms/FilterBar";
+import { FilterBarProps } from "../src/app/components/molecules/FilterBar";
+import "../src/app/components/molecules/FilterBar";
 
 describe("FilterBar", () => {
   test("should display title tag", () => {

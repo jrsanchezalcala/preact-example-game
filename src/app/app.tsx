@@ -1,7 +1,7 @@
 import { Component, h, JSX, createContext, Fragment } from "preact";
 import { GameProps } from "./components/pages/Game";
 //import { router } from "./router";
-import "./components/pages/Game";
+import "./componentsImports";
 
 const Theme = createContext("dark");
 

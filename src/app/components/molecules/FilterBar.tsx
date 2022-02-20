@@ -6,7 +6,14 @@ import {
   JSX
 } from "preact";
 import register from "preact-custom-element";
-import "./Title";
+
+declare global {
+  namespace preact.createElement.JSX {
+    interface IntrinsicElements {
+      ["x-filter-bar"]: FilterBarProps;
+    }
+  }
+}
 
 export interface FilterBarProps {
   title: string;

@@ -1,17 +1,12 @@
 import { Fragment, FunctionComponent, JSX } from "preact";
 import register from "preact-custom-element";
-import { useState } from "preact/hooks";
-import { FilterItemProps } from "../atoms/FilterItem";
-import { TitleProps } from "../atoms/Title";
-import { FilterProps } from "../molecules/Filter";
-import "../atoms/Title";
-import "../molecules/Filter";
+import { FilterItemProps } from "../molecules/FilterItem";
+import { DataService } from "../pages/Game";
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-title"]: TitleProps;
-      ["x-filter"]: FilterProps;
+      ["x-top-section"]: TopSectionProps;
     }
   }
 }
@@ -30,10 +25,18 @@ export const TopSection: FunctionComponent<TopSectionProps> = ({
   title,
   children
 }): JSX.Element => {
+  const handleChange = (filterValue) => {
+    DataService.setOrder(filterValue);
+  };
+  console.log(handleChange);
   return (
     <div class="top-section">
       <x-title text={title} />
-      <x-filter title={"SORT GAMES"} items={JSON.stringify(filterItems)} />
+      <x-filter
+        title={"SORT GAMES"}
+        items={JSON.stringify(filterItems)}
+        onChange={handleChange}
+      />
     </div>
   );
 };

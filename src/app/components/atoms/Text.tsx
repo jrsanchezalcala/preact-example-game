@@ -1,11 +1,16 @@
-import {FunctionComponent,h, JSX} from 'preact';
-import register from 'preact-custom-element';
+import { FunctionComponent, h, JSX } from "preact";
+import register from "preact-custom-element";
 export interface TextProps {
-	text: string
+  text: string;
 }
-
-export const Text: FunctionComponent<TextProps> = ({text}): JSX.Element => {
-
-return <span class="text" >{text}</span>;
+declare global {
+  namespace preact.createElement.JSX {
+    interface IntrinsicElements {
+      ["x-text"]: TextProps;
+    }
+  }
+}
+export const Text: FunctionComponent<TextProps> = ({ text }): JSX.Element => {
+  return <span class="text">{text}</span>;
 };
-register(Text, 'x-text',['text']);
+register(Text, "x-text", ["text"]);

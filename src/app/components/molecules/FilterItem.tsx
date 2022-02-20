@@ -1,8 +1,14 @@
 import { Fragment, FunctionComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
-import "../atoms/Text";
-import "../atoms/Checkbox";
-import { CheckboxProps } from "../atoms/Checkbox";
+
+declare global {
+  namespace preact.createElement.JSX {
+    interface IntrinsicElements {
+      ["x-filter-item"]: FilterItemProps;
+    }
+  }
+}
+
 export interface FilterItemProps {
   text: string;
   value: string;
@@ -10,13 +16,7 @@ export interface FilterItemProps {
   onClick?: (e) => void;
   key?: string;
 }
-declare global {
-  namespace preact.createElement.JSX {
-    interface IntrinsicElements {
-      ["x-checkbox"]: CheckboxProps;
-    }
-  }
-}
+
 export const FilterItem: FunctionComponent<FilterItemProps> = ({
   text,
   value,

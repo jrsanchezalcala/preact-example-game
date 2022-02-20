@@ -7,16 +7,12 @@ import {
 } from "preact";
 import register from "preact-custom-element";
 import { useState } from "preact/hooks";
-import { FilterItemProps } from "../atoms/FilterItem";
-import { FilterBarProps } from "../atoms/FilterBar";
-import "../atoms/FilterItem";
-import "../atoms/FilterBar";
+import { FilterItemProps } from "./FilterItem";
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-filter-item"]: FilterItemProps;
-      ["x-filter-bar"]: FilterBarProps;
+      ["x-filter"]: FilterProps;
     }
   }
 }
@@ -40,20 +36,21 @@ export const Filter: FunctionalComponent<FilterProps> = ({
   ) as FilterItemProps[];
 
   const handleClick = (e) => {
-    console.log("open");
     e.preventDefault();
     setOpen(!open);
   };
-  const handleCheck = (newvalue) => {
+  const handleCheck = (newvalue, callback) => {
     if (value !== newvalue) {
       setValue(newvalue);
-      onChange(newvalue);
+      if (callback) callback(newvalue);
     }
   };
 
   if (!value && items && items.length > 0) {
     setValue(items[0].value);
   }
+  console.log(onChange);
+
   return (
     <div class={"filter " + (open ? "open" : "")}>
       <x-filter-bar onClick={handleClick} title={title} open={open} />
@@ -67,7 +64,9 @@ export const Filter: FunctionalComponent<FilterProps> = ({
                   text={item.text}
                   value={item.value}
                   checked={item.checked ? true : false}
-                  onClick={handleCheck}
+                  onClick={(newvalue) => {
+                    handleCheck(newvalue, onChange);
+                  }}
                 />
               );
             })}

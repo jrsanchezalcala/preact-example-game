@@ -9,7 +9,7 @@ import { Subject } from "rxjs";
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-game-template"]: GameTemplateProps;
+      ["x-game"]: GameTemplateProps;
     }
   }
 }
@@ -49,12 +49,16 @@ export class DataService {
     return items;
   }
 
-  static setFilter(filter: (item: Item) => void) {
+  static async setFilter(filter: (item: Item) => void) {
     this.filterFunction = filter;
+    let items = await this.request(this.index, this.numItems);
+    DataService.onChange.next(items);
   }
 
-  static setOrder(order: (itemA: Item, itemB: Item) => number) {
+  static async setOrder(order: (itemA: Item, itemB: Item) => number) {
     this.orderFunction = order;
+    let items = await this.request(this.index, this.numItems);
+    DataService.onChange.next(items);
   }
 }
 

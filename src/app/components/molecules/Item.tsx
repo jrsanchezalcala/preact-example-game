@@ -1,28 +1,13 @@
-import {
-  Fragment,
-  FunctionalComponent,
-  FunctionComponent,
-  h,
-  JSX
-} from "preact";
+import { Fragment, FunctionalComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
-import { ItemTextProps } from "../molecules/ItemText";
-import { ItemImageProps } from "../molecules/ItemImage";
-import { ButtonProps } from "../atoms/Button";
-import "../molecules/ItemImage";
-import "../molecules/ItemText";
-import "../atoms/Button";
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-item-image"]: ItemImageProps;
-      ["x-item-text"]: ItemTextProps;
-      ["x-button"]: ButtonProps;
+      ["x-item"]: ItemProps;
     }
   }
 }
-
 export interface Item {
   name: string;
   displayName: string;

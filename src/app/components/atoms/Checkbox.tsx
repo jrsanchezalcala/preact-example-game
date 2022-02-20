@@ -21,22 +21,24 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 }): JSX.Element => {
   const handleClick = (e) => {
     debugger;
-    console.log("ENTRA");
+    console.log("ENTRA", value, mark);
     e.preventDefault();
     onClick(value);
   };
   return (
-    <Fragment>
-      <span onClick={handleClick} class="checkbox">
-        {mark ? <span class="checked"></span> : ""}
-      </span>
+    <div
+      onClick={() => {
+        if (onClick) onClick(value);
+      }}
+    >
+      <span class="checkbox">{mark ? <span class="checked"></span> : ""}</span>
       <input
         type="checkbox"
         checked={mark}
         value={value}
         style="display:none"
       />
-    </Fragment>
+    </div>
   );
 };
-register(Checkbox, "x-checkbox", ["mark", "value"]);
+register(Checkbox, "x-checkbox", ["mark", "value", "onClick"]);

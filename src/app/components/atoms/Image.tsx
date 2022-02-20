@@ -5,6 +5,14 @@ export interface ImageProps {
   description?: string;
 }
 
+declare global {
+  namespace preact.createElement.JSX {
+    interface IntrinsicElements {
+      ["x-image"]: ImageProps;
+    }
+  }
+}
+
 export const Image: FunctionComponent<ImageProps> = ({
   src,
   description
