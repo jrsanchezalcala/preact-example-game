@@ -35,7 +35,7 @@ export const FilterBar: FunctionComponent<{ title: string; open: string }> = ({
           />
         </svg>
       </span>
-      <x-title tag="h4" text={title}/>
+      <x-title tag="span" text={title}/>
     </div>
   );
 };

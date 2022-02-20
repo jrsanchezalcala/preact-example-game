@@ -44,12 +44,7 @@ export const GameTemplate: FunctionalComponent<GameTemplateProps> = ({
     <div class="page">
       <div class="main">
         <x-top-section title={title} />
-      </div>
-      <div class="content">
-        
-             <x-items-section />
-
-        
+        <x-items-section />
       </div>
     </div>
   );

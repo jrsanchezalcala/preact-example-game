@@ -64,16 +64,17 @@ import {
     let data = getItem();
     return (
       <div class="item">
-        <div class="item-section">
+        <div class="item-col">
             <x-item-image text={data.detailURL} src={data.image} />
         </div> 
-        <div class="item-section">
+        <div class="item-col">
           <x-item-text price={getPriceText(data,"EUR")} provider={data?.provider ? data?.provider.join(", ") : "No provider"} title={data?.displayName || ""} />      
         </div>
-        <div class="item-section">
+        <div class="item-col">
           <x-button text={"PLAY"} onClick={() => {handlePlay(data)}}/>
         </div>
       </div>
+    
     );
   };
   register(ItemDisplay, "x-item", ["item"]);

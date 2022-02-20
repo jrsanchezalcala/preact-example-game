@@ -31,7 +31,7 @@ export const ItemsSection: FunctionComponent<ItemsSectionProps> = (props
     setItems([...items,...moreitems]);
   }
   
-  return <div class="top-section">
+  return <div class="items-section">
     {items && items.map((item) => {
       return <x-item item={JSON.stringify(item)} />
     })}
