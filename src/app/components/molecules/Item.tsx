@@ -30,8 +30,8 @@ export interface Item {
   image: string;
   detailURL: string;
   currencyData: Currency;
-  provider: [string];
-  volatile?: [string];
+  provider?: [string];
+  volatility?: [string];
 }
 
 export interface Currency {
