@@ -23,7 +23,7 @@ declare global {
 
 export type FilterProps = {
   title: string;
-  items: FilterItemProps[];
+  items: FilterItemProps[] | string;
   onChange?: (value) => void;
 };
 
@@ -34,14 +34,47 @@ export const Filter: FunctionalComponent<FilterProps> = ({
   children
 }): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("");
+  items = (
+    typeof items == "string" ? JSON.parse(items) : items
+  ) as FilterItemProps[];
 
+  const handleClick = (e) => {
+    console.log("open");
+    e.preventDefault();
+    setOpen(!open);
+  };
+  const handleCheck = (newvalue) => {
+    if (value !== newvalue) {
+      setValue(newvalue);
+      onChange(newvalue);
+    }
+  };
+
+  if (!value && items && items.length > 0) {
+    setValue(items[0].value);
+  }
   return (
-    <div class="filter">
-      <x-filter-bar title={title} open={false} />
-      {items &&
-        items.map((item) => {
-          <x-filter-item text={item.text} value={item.value} />;
-        })}
+    <div class={"filter " + (open ? "open" : "")}>
+      <x-filter-bar onClick={handleClick} title={title} open={open} />
+      {open ? (
+        <div class={"filter-items " + (open ? "open" : "")}>
+          {items &&
+            items.map((item) => {
+              return (
+                <x-filter-item
+                  key={item.value}
+                  text={item.text}
+                  value={item.value}
+                  checked={item.checked ? true : false}
+                  onClick={handleCheck}
+                />
+              );
+            })}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

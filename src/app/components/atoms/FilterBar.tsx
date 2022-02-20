@@ -11,15 +11,16 @@ import "./Title";
 export interface FilterBarProps {
   title: string;
   open: boolean;
+  onClick: (e) => void;
 }
 
-export const FilterBar: FunctionComponent<{ title: string; open: string }> = ({
-  title,
-  open,
-  children
-}): JSX.Element => {
+export const FilterBar: FunctionComponent<{
+  title: string;
+  open: string;
+  onClick;
+}> = ({ title, open, children, onClick }): JSX.Element => {
   return (
-    <div class="filter-bar">
+    <div class={"filter-bar " + (open ? "open" : "")} onClick={onClick}>
       <span class="icon">
         <svg
           width="15px"

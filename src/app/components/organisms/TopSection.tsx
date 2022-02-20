@@ -20,18 +20,20 @@ export interface TopSectionProps {
   title: string;
 }
 
-type ArrayFilterItem = Array<FilterItemProps> | [];
+const filterItems: Array<FilterItemProps> = [
+  { text: "Name(A-Z)", value: "name_desc" },
+  { text: "Stake (min to max)", value: "stake_asc" },
+  { text: "Stake (max to min)", value: "stake_desc" }
+];
 
 export const TopSection: FunctionComponent<TopSectionProps> = ({
   title,
   children
 }): JSX.Element => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [filterItems, setFilterItems] = useState<ArrayFilterItem>([]);
   return (
     <div class="top-section">
       <x-title text={title} />
-      <x-filter title={"SORT GAMES"} items={filterItems} />
+      <x-filter title={"SORT GAMES"} items={JSON.stringify(filterItems)} />
     </div>
   );
 };

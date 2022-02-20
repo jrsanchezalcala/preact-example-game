@@ -3,6 +3,11 @@
 //vars
 @font-face {
   font-family: Daxline Pro;
+  src: url("../DaxlinePro.ttf");
+  //TODO - add other font formats
+}
+@font-face {
+  font-family: Daxline ExtraBold;
   src: url("../DaxlinePro-ExtraBold.ttf");
   //TODO - add other font formats
 }
@@ -20,7 +25,7 @@
 
 .font_title(@font-size) {
   color: @title_color;
-  font-family: Daxline Pro;
+  font-family: Daxline ExtraBold;
   font-style: normal;
   font-weight: 900;
   font-size: @font-size;
@@ -28,6 +33,7 @@
 
 x-game {
   width: 100vw;
+  font-family: Daxline Pro;
 }
 
 x-game-template {
@@ -63,28 +69,56 @@ x-filter {
     background: @background_color_secondary;
     color: @title_color;
     width: 135px;
-    padding: 4px @base_distance;
+    //padding: 4px @base_distance;
     border-radius: 4px;
-    box-sizing: border-box;
   }
+  .filter.open {
+    width: 272px;
+  }
+  .filter-items {
+    position: absolute;
+    background: @background_color_secondary;
+    width: 272px;
+    border-bottom-left-radius: @base_distance;
+    border-bottom-right-radius: @base_distance;
+  }
+
   x-filter-bar {
+    cursor: pointer;
+    display: block;
+    padding: @base_distance;
     .icon {
       color: @text_color;
+      padding: 0px @base_distance;
     }
     .filter-bar {
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: start;
     }
+
     x-title {
       .title {
         .font_title(14px);
-        padding-top: @base_distance;
+        padding-top: @base_distance @base_distance;
       }
     }
   }
 
   x-filter-item {
+    .filter-item {
+      display: grid;
+      padding: 14px 7px;
+      grid-template-columns: 1fr 2fr;
+    }
+    x-checkbox {
+      justify-self: center;
+      align-self: center;
+    }
+    x-text {
+      justify-self: start;
+      align-self: center;
+    }
   }
 }
 
@@ -179,6 +213,24 @@ x-image {
     }
   }
 }
+x-checkbox {
+  .checkbox {
+    border: solid 1px @text_color;
+    border-radius: 40px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .checked {
+    background-color: #f72585;
+    border-radius: 40px;
+    width: 21px;
+    height: 21px;
+  }
+}
+
 @media screen and (min-width: @middle-width) {
   x-item:hover {
     background-color: @background_color_secondary;
