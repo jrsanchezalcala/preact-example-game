@@ -20,22 +20,22 @@ export interface Item {
 }
 
 export interface Currency {
-  [key: string]: {
-    noMob?: boolean;
-    noDesk?: boolean;
-    minimumStake: number;
-  };
+  name?: string;
+  simbol?: string;
+  noMob?: boolean;
+  noDesk?: boolean;
+  minimumStake: number;
 }
 
 export type ItemProps = {
   item: Item | string;
+  key?: string;
 };
 const getPriceText = (item: Item, currency: string) => {
-  let minimun = item?.currencyData[currency]?.minimumStake
-    ? item?.currencyData[currency]?.minimumStake
-    : null;
+  console.log(item);
+  let minimun = item?.currencyData?.minimumStake;
   return minimun
-    ? `${item.currencyData[currency].minimumStake} ${currency} min Stake`
+    ? `${minimun} ${item.currencyData.simbol} min Stake`
     : `Not available in ${currency}`;
 };
 const handlePlay = (item: Item) => {};

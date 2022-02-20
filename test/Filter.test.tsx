@@ -5,9 +5,14 @@ import "../src/app/componentsImports";
 
 describe("Filter", () => {
   test("should display title tag", () => {
+    const handleChange = jest.fn();
+
     const { container } = render(
-      <x-filter title="hola" onChange={() => {}} items={[]} />
+      <x-filter title="hola" onChange={handleChange} items={[]} />
     );
+    container.addEventListener("change", handleChange);
     expect(container.textContent).toMatch("hola");
+    fireEvent.change(container);
+    expect(handleChange).toHaveBeenCalledTimes(1);
   });
 });

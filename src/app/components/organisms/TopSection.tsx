@@ -1,7 +1,9 @@
 import { Fragment, FunctionComponent, JSX } from "preact";
 import register from "preact-custom-element";
 import { FilterItemProps } from "../molecules/FilterItem";
-import { DataService } from "../pages/Game";
+import { DataService } from "../../service/DataService";
+import { useState } from "preact/hooks";
+import { Item, ItemDisplay } from "../molecules/Item";
 
 declare global {
   namespace preact.createElement.JSX {
@@ -15,20 +17,31 @@ export interface TopSectionProps {
   title: string;
 }
 
-const filterItems: Array<FilterItemProps> = [
-  { text: "Name(A-Z)", value: "name_desc" },
-  { text: "Stake (min to max)", value: "stake_asc" },
-  { text: "Stake (max to min)", value: "stake_desc" }
+const InitialFilterItems: Array<FilterItemProps> = [
+  { text: "Name(A-Z)", value: "name_desc", mark: true },
+  { text: "Stake (min to max)", value: "stake_asc", mark: false },
+  { text: "Stake (max to min)", value: "stake_desc", mark: false }
 ];
 
 export const TopSection: FunctionComponent<TopSectionProps> = ({
   title,
   children
 }): JSX.Element => {
-  const handleChange = (filterValue) => {
-    DataService.setOrder(filterValue);
+  let [filterItems, setFilterItems] = useState(InitialFilterItems);
+
+  const handleChange = (event: CustomEvent) => {
+    console.log("CHANGE");
+    let { detail } = event;
+    if (detail) {
+      DataService.setOrder(detail);
+      let newItems = filterItems.map((item) => {
+        item.mark = item.value == detail;
+        return item;
+      });
+      debugger;
+      setFilterItems(newItems);
+    }
   };
-  console.log(handleChange);
   return (
     <div class="top-section">
       <x-title text={title} />

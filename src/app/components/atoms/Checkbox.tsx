@@ -1,9 +1,12 @@
-import { Fragment, FunctionComponent, h, JSX } from "preact";
+import { Fragment, Ref, FunctionComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
+import { useRef } from "preact/hooks";
+import { forwardRef } from "preact/compat";
+
 export interface CheckboxProps {
   mark: boolean;
   value: string;
-  onClick: (e) => void;
+  onClick?: (e) => void;
 }
 
 declare global {
@@ -16,21 +19,13 @@ declare global {
 
 export const Checkbox: FunctionComponent<CheckboxProps> = ({
   mark,
-  value,
-  onClick
+  value
 }): JSX.Element => {
-  const handleClick = (e) => {
-    debugger;
-    console.log("ENTRA", value, mark);
-    e.preventDefault();
-    onClick(value);
-  };
+  const ref = useRef(null);
+  if (typeof mark == "string" && mark == "false") mark = false;
+
   return (
-    <div
-      onClick={() => {
-        if (onClick) onClick(value);
-      }}
-    >
+    <div ref={ref}>
       <span class="checkbox">{mark ? <span class="checked"></span> : ""}</span>
       <input
         type="checkbox"

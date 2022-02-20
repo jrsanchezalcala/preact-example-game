@@ -3,7 +3,10 @@ import { render, fireEvent, screen } from "@testing-library/preact";
 import "../src/app/componentsImports";
 describe("FilterBar", () => {
   test("should display title tag", () => {
-    const { container } = render(<x-filter-bar open={false} title="hola" />);
+    var onClick = () => {};
+    const { container } = render(
+      <x-filter-bar open={false} title="hola" onClick={onClick} />
+    );
     expect(container.textContent).toMatch("hola");
   });
 });

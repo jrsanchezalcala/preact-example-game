@@ -1,12 +1,10 @@
 import { FunctionalComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
-import { TopSectionProps } from "../organisms/TopSection";
 import "../organisms/TopSection";
 import { Item } from "../molecules/Item";
 import "../organisms/ItemsSection";
-import { ItemsSectionProps } from "../organisms/ItemsSection";
-import { Ref, useEffect, useImperativeHandle, useState } from "preact/hooks";
-import { DataService } from "../pages/Game";
+import { Ref, useState } from "preact/hooks";
+import { DataService } from "../../service/DataService";
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
@@ -39,6 +37,8 @@ export const GameTemplate: FunctionalComponent<GameTemplateProps> = ({
         })
       : [];
   };
+
+  DataService.setCurrency(currency);
 
   return (
     <div class="page">

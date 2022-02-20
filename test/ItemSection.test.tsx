@@ -1,9 +1,11 @@
+import { h } from "preact";
+
 import { render } from "@testing-library/preact";
 
 import "../src/app/componentsImports";
 
 import { Item } from "../src/app/components/molecules/Item";
-import { DataService } from "../src/app/components/pages/Game";
+import { DataService } from "../src/app/service/DataService";
 describe("ItemSection", () => {
   test("should display title tag", () => {
     let items: Item[] = [

@@ -1,5 +1,6 @@
 import { Fragment, FunctionComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
+import { useRef } from "preact/hooks";
 
 declare global {
   namespace preact.createElement.JSX {
@@ -12,22 +13,25 @@ declare global {
 export interface FilterItemProps {
   text: string;
   value: string;
-  checked?: boolean;
-  onClick?: (e) => void;
+  mark?: boolean;
   key?: string;
+  onClick?: (e) => void;
 }
 
 export const FilterItem: FunctionComponent<FilterItemProps> = ({
   text,
   value,
-  checked,
-  onClick
+  mark
 }): JSX.Element => {
+  const ref = useRef(null);
+
+  if (typeof mark == "string" && mark == "false") mark = false;
+
   return (
-    <div class="filter-item">
-      <x-checkbox mark={checked} onClick={onClick} value={value} />
+    <div ref={ref} class="filter-item">
+      <x-checkbox mark={mark} value={value} />
       <x-text text={text} />
     </div>
   );
 };
-register(FilterItem, "x-filter-item", ["text", "value"]);
+register(FilterItem, "x-filter-item", ["text", "value", "mark"]);
