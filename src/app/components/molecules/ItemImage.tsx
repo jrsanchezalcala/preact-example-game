@@ -14,21 +14,16 @@ export type ItemImageProps = {
   src: string;
 };
 
-const host = "https://www.lottoland.com";
-
 export const ItemImage: FunctionalComponent<ItemImageProps> = ({
   text,
   src
 }): JSX.Element => {
-  const getUrlImage = (src = "") => {
-    return host + src;
-  };
   return (
     <div class="item-image">
       <span icon="icon">
         <image src={"info.svg"} width="15" height="15" />
       </span>
-      <x-image url={getUrlImage(src)} description={text || ""} />
+      <x-image url={src} description={text || ""} />
     </div>
   );
 };

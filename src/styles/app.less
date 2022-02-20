@@ -108,7 +108,7 @@ x-filter {
   x-filter-item {
     .filter-item {
       display: grid;
-      padding: 14px 7px;
+      padding: (@base_distance * 2) @base_distance;
       grid-template-columns: 1fr 2fr;
     }
     x-checkbox {
@@ -130,7 +130,7 @@ x-items-section {
   }
   x-item {
     display: grid;
-    padding: 0 24px;
+    padding: 0 (@base_distance * 3);
     .item {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -189,12 +189,12 @@ x-button {
     .font_title(14px);
     background: linear-gradient(90deg, #a5cd28 0%, #69a507 100%);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
-    padding: @base_distance 14px;
+    padding: @base_distance (@base_distance * 2);
     border-radius: 2px;
     color: white;
   }
   @media screen and (min-width: @middle-width) {
-    padding: @base_distance 16px;
+    padding: @base_distance (@base_distance * 2);
     border-radius: 4px;
   }
 }
