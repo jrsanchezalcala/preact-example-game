@@ -3,9 +3,13 @@ import register from "preact-custom-element";
 
 export interface TitleProps {
   text: string;
+  tag ?: string
 }
 
-export const Title: FunctionComponent<TitleProps> = ({ text }): JSX.Element => {
-  return <h1 class="title">{text}</h1>;
+export const Title: FunctionComponent<TitleProps> = ({ text , tag = "h1"}): JSX.Element => {
+  
+  const Tag = tag as keyof JSX.IntrinsicElements;
+  //@ts-ignore
+  return <Tag class="title">{text}</Tag>;
 };
 register(Title, "x-title", []);

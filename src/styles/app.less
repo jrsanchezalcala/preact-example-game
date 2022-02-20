@@ -18,16 +18,19 @@
 @middle-width: 768px;
 @big-width: 1280px;
 
-.title {
+.font_title(@font-size) {
   color: @title_color;
   font-family: Daxline Pro;
   font-style: normal;
   font-weight: 900;
+  font-size : @font-size;
 }
 
 x-game {
   width: 100%;
 }
+
+
 x-game-template {
   //width: 100%;
   .main {
@@ -49,14 +52,13 @@ x-top-section {
     //width: 100%;
     padding: @base_distance;
   }
-  .title {
-    font-size: 21px;
-  }
+  
 }
 
 x-title {
-  h1 {
-  }
+    .title {
+      .font_title(24px)     
+    }
 }
 
 x-filter {
@@ -77,12 +79,93 @@ x-filter {
       align-items: center;
       justify-content: space-around;
     }
-    .title {
-      font-size: 14px;
-      padding-top: 6px;
+    x-title{
+      .title{
+        .font_title(14px);     
+        padding-top: @base_distance;
+      }
     }
+    
   }
 
   x-filter-item {
   }
 }
+  
+  
+  x-items-section{
+    .items-section{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    x-item{
+      .item{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        align-items: center;
+      }
+      x-title{
+        .title{
+          .font_title(14px);     
+        }
+      }
+      x-item-text {
+        .item-text{
+        display: flex;
+        flex-direction: column;
+        }
+        .text{
+          font-size : 15px;
+          padding:3px;
+        }
+      }
+      @media screen and (min-width: @middle-width) {
+        x-button{
+          display:none
+        }
+        .item:hover x-button{
+          display:block;
+        }
+      }
+      
+    }
+    @media screen and (min-width: @middle-width) {
+      .items-section {
+        grid-template-columns: repeat(3, 1fr);
+
+      }
+    }
+    
+  }
+
+x-text{
+  .text{
+    color : @text_color;
+  }
+  
+}
+x-button{
+  .button{
+    background: linear-gradient(90deg, #A5CD28 0%, #69A507 100%);
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    
+  }
+
+}
+
+x-image{
+  .image{
+  width: 96px;
+  height:72px;
+  }
+  @media screen and (min-width: @middle-width) {
+    .image{
+      width: 132px;
+      height:96px;
+      }
+  }
+}
+
+
+

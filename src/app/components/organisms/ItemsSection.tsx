@@ -1,22 +1,40 @@
 import { Fragment, FunctionComponent, JSX } from "preact";
 import register from "preact-custom-element";
-import { useState } from "preact/hooks";
-
+import { useState ,useEffect} from "preact/hooks";
+import { Item } from "../molecules/Item";
+import { ItemProps } from "../molecules/Item";
+import "../molecules/Item";
+import {DataService} from '../pages/Game';
 declare global {
   namespace preact.createElement.JSX {
-    interface IntrinsicElements {}
+    interface IntrinsicElements {
+      ['x-item'] : ItemProps
+    }
   }
 }
 
 export interface ItemsSectionProps {
-  title: string;
+  items ?: Item[] | string;
 }
 
-export const ItemsSection: FunctionComponent<ItemsSectionProps> = ({
-  title,
-  children
-}): JSX.Element => {
-  const [items, setItems] = useState([]);
-  return <div class="top-section"></div>;
+export const ItemsSection: FunctionComponent<ItemsSectionProps> = (props
+  
+): JSX.Element => {
+  let [items,setItems] = useState([]);
+  useEffect(() => {
+    
+    getMore();
+  },[]);
+
+   const getMore = async () => {
+    let moreitems = await DataService.getItems();
+    setItems([...items,...moreitems]);
+  }
+  
+  return <div class="top-section">
+    {items && items.map((item) => {
+      return <x-item item={JSON.stringify(item)} />
+    })}
+  </div>;
 };
-register(ItemsSection, "x-items-section");
+register(ItemsSection, "x-items-section",['items']);
