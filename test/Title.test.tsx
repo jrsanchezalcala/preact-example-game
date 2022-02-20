@@ -1,8 +1,7 @@
 import { h } from "preact";
 import { render, fireEvent, screen } from "@testing-library/preact";
 
-import { TitleProps } from "../src/app/components/atoms/Title";
-import "../src/app/components/atoms/Title";
+import "../src/app/componentsImports";
 
 describe("Title", () => {
   test("should display title tag", () => {

@@ -1,8 +1,7 @@
 import { h } from "preact";
 import { render, fireEvent, screen } from "@testing-library/preact";
 
-import { FilterProps } from "../src/app/components/molecules/Filter";
-import "../src/app/components/molecules/Filter";
+import "../src/app/componentsImports";
 
 describe("Filter", () => {
   test("should display title tag", () => {

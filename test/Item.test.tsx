@@ -1,8 +1,8 @@
 import { h } from "preact";
 import { render, fireEvent, screen } from "@testing-library/preact";
 
-import { Item, ItemProps } from "../src/app/components/molecules/Item";
-import "../src/app/components/molecules/Item";
+import { Item } from "../src/app/components/molecules/Item";
+import "../src/app/componentsImports";
 
 describe("Item", () => {
   test("should display item data", () => {
