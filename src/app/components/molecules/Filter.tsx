@@ -1,13 +1,5 @@
-import {
-  Fragment,
-  FunctionalComponent,
-  FunctionComponent,
-  h,
-  JSX,
-  Ref
-} from "preact";
+import { FunctionalComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
-import { forwardRef } from "preact/compat";
 import { useState, useRef } from "preact/hooks";
 import { FilterItemProps } from "./FilterItem";
 
@@ -32,15 +24,15 @@ export const Filter: FunctionalComponent<FilterProps> = ({
 }): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false);
   items = (
-    typeof items == "string" ? JSON.parse(items) : items
+    typeof items === "string" ? JSON.parse(items) : items
   ) as FilterItemProps[];
 
-  let ref = useRef(null);
+  const ref = useRef(null);
   const handleClick = (e) => {
     e.preventDefault();
     setOpen(!open);
   };
-  const handleCheck = (item) => {
+  const handleCheck = (item): void => {
     ref.current.dispatchEvent(
       new CustomEvent("change", { detail: item.value, bubbles: true })
     );
@@ -58,7 +50,7 @@ export const Filter: FunctionalComponent<FilterProps> = ({
                   key={item.value}
                   text={item.text}
                   value={item.value}
-                  mark={item.mark ? true : false}
+                  mark={Boolean(item.mark)}
                   onClick={(newvalue) => {
                     handleCheck(item);
                   }}

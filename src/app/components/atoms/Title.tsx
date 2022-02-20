@@ -1,25 +1,25 @@
-import { FunctionComponent, h, JSX } from "preact";
-import register from "preact-custom-element";
+import { FunctionComponent, h, JSX } from 'preact';
+import register from 'preact-custom-element';
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-title"]: TitleProps;
+      ['x-title']: TitleProps
     }
   }
 }
 
 export interface TitleProps {
-  text: string;
-  tag?: string;
+  text: string
+  tag?: string
 }
 
 export const Title: FunctionComponent<TitleProps> = ({
   text,
-  tag = "h1"
+  tag = 'h1'
 }): JSX.Element => {
   const Tag = tag as keyof JSX.IntrinsicElements;
-  //@ts-ignore
-  return <Tag class="title">{text}</Tag>;
+  // @ts-ignore
+  return <Tag class='title'>{text}</Tag>;
 };
-register(Title, "x-title", []);
+register(Title, 'x-title', []);

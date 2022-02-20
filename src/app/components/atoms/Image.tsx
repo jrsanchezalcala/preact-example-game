@@ -12,14 +12,13 @@ declare global {
     }
   }
 }
-//TODO - put in cofiguration file
+// TODO - put in cofiguration file
 const host = "https://www.lottoland.com";
 
 export const Image: FunctionComponent<ImageProps> = ({
   url,
   description
 }): JSX.Element => {
-  console.log(url);
   return <img class="image" src={host + url} alt={description || ""} />;
 };
 register(Image, "x-image", ["url", "description"]);

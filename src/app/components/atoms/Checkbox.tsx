@@ -1,7 +1,6 @@
-import { Fragment, Ref, FunctionComponent, h, JSX } from "preact";
+import { FunctionComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
 import { useRef } from "preact/hooks";
-import { forwardRef } from "preact/compat";
 
 export interface CheckboxProps {
   mark: boolean;
@@ -22,11 +21,13 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   value
 }): JSX.Element => {
   const ref = useRef(null);
-  if (typeof mark == "string" && mark == "false") mark = false;
+  if (typeof mark === "string" && mark === "false") {
+    mark = false;
+  }
 
   return (
     <div ref={ref}>
-      <span class="checkbox">{mark ? <span class="checked"></span> : ""}</span>
+      <span class="checkbox">{mark ? <span class="checked" /> : ""}</span>
       <input
         type="checkbox"
         checked={mark}

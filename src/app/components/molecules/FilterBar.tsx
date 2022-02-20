@@ -1,10 +1,4 @@
-import {
-  Fragment,
-  FunctionalComponent,
-  FunctionComponent,
-  h,
-  JSX
-} from "preact";
+import { FunctionalComponent, FunctionComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
 
 declare global {

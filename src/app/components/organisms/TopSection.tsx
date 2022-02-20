@@ -27,18 +27,16 @@ export const TopSection: FunctionComponent<TopSectionProps> = ({
   title,
   children
 }): JSX.Element => {
-  let [filterItems, setFilterItems] = useState(InitialFilterItems);
+  const [filterItems, setFilterItems] = useState(InitialFilterItems);
 
   const handleChange = (event: CustomEvent) => {
-    console.log("CHANGE");
-    let { detail } = event;
+    const { detail } = event;
     if (detail) {
       DataService.setOrder(detail);
-      let newItems = filterItems.map((item) => {
+      const newItems = filterItems.map((item) => {
         item.mark = item.value == detail;
         return item;
       });
-      debugger;
       setFilterItems(newItems);
     }
   };

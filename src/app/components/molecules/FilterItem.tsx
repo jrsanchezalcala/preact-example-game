@@ -1,4 +1,4 @@
-import { Fragment, FunctionComponent, h, JSX } from "preact";
+import { FunctionComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
 import { useRef } from "preact/hooks";
 
@@ -25,7 +25,9 @@ export const FilterItem: FunctionComponent<FilterItemProps> = ({
 }): JSX.Element => {
   const ref = useRef(null);
 
-  if (typeof mark == "string" && mark == "false") mark = false;
+  if (typeof mark === "string" && mark == "false") {
+    mark = false;
+  }
 
   return (
     <div ref={ref} class="filter-item">

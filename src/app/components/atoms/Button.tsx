@@ -1,16 +1,16 @@
-import { FunctionComponent, h, JSX } from "preact";
-import register from "preact-custom-element";
+import { FunctionComponent, h, JSX } from 'preact';
+import register from 'preact-custom-element';
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-button"]: ButtonProps;
+      ['x-button']: ButtonProps
     }
   }
 }
 export interface ButtonProps {
-  text: string;
-  onClick: (e) => void;
+  text: string
+  onClick: (e) => void
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({
@@ -18,9 +18,9 @@ export const Button: FunctionComponent<ButtonProps> = ({
   onClick
 }): JSX.Element => {
   return (
-    <button class="button" type="button" onClick={onClick}>
+    <button class='button' type='button' onClick={onClick}>
       {text}
     </button>
   );
 };
-register(Button, "x-button", ["text", "onClick"]);
+register(Button, 'x-button', ['text', 'onClick']);

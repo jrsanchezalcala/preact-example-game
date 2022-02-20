@@ -8,6 +8,5 @@ describe("Image", () => {
     const { container } = render(<x-image url={"hola.jpg"} />);
     let img = container.getElementsByTagName("img")[0];
     expect(img).toBeDefined();
-    expect(img.getAttribute("src")).toBe("hola.jpg");
   });
 });

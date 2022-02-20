@@ -32,8 +32,7 @@ export type ItemProps = {
   key?: string;
 };
 const getPriceText = (item: Item, currency: string) => {
-  console.log(item);
-  let minimun = item?.currencyData?.minimumStake;
+  const minimun = item?.currencyData?.minimumStake;
   return minimun
     ? `${minimun} ${item.currencyData.simbol} min Stake`
     : `Not available in ${currency}`;
@@ -43,9 +42,9 @@ export const ItemDisplay: FunctionalComponent<ItemProps> = ({
   item
 }): JSX.Element => {
   const getItem = () => {
-    return typeof item == "string" ? JSON.parse(item) : item;
+    return typeof item === "string" ? JSON.parse(item) : item;
   };
-  let data: Item = getItem();
+  const data: Item = getItem();
   return (
     <Fragment>
       <div class="item">
