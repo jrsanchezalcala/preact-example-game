@@ -1,7 +1,7 @@
 import { FunctionComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
 export interface ImageProps {
-  src: string;
+  url: string;
   description?: string;
 }
 
@@ -14,9 +14,10 @@ declare global {
 }
 
 export const Image: FunctionComponent<ImageProps> = ({
-  src,
+  url,
   description
 }): JSX.Element => {
-  return <img class="image" src={src} alt={description || ""} />;
+  console.log(url);
+  return <img class="image" src={url} alt={description || ""} />;
 };
-register(Image, "x-image", ["src", "description"]);
+register(Image, "x-image", ["url", "description"]);

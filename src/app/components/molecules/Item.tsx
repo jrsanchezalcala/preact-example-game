@@ -45,12 +45,12 @@ export const ItemDisplay: FunctionalComponent<ItemProps> = ({
   const getItem = () => {
     return typeof item == "string" ? JSON.parse(item) : item;
   };
-  let data = getItem();
+  let data: Item = getItem();
   return (
     <Fragment>
       <div class="item">
         <div class="item-col">
-          <x-item-image text={data.detailURL} src={data.image} />
+          <x-item-image text={data.displayName} src={data.image} />
         </div>
         <div class="item-col">
           <x-item-text

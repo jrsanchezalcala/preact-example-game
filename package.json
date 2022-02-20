@@ -9,8 +9,8 @@
 		"start": "webpack serve --config ./webpack.config.js --mode development --host 0.0.0.0",
 		"clean": "rimraf ./dist",
 		"fix:lint": "npx eslint src --fix",
-		"test": "jest  --verbose ./test/Checkbox.test",
-		"test:debug": "node --inspect-brk ./node_modules/jest/bin/jest  --verbose ./test/Checkbox.test"
+		"test": "jest  --verbose",
+		"test:debug": "node --inspect-brk ./node_modules/jest/bin/jest  --verbose"
 	},
 	"repository": {
 		"type": "git",

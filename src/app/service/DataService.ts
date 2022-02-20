@@ -24,9 +24,8 @@ const sortDataFunctions = {
 
 export class DataService {
    
-  static mappedData = null;
   static onChange: Subject<Item[]> = new Subject();
-  static items: Item[] = [];
+  static items: Item[] = null;
   static index: number = 0;
   static numItems: number = 20;
   static currency : string;
@@ -39,12 +38,12 @@ export class DataService {
   }
 
   static async request(from, to) {
-    if(!this.mappedData)
-    this.mappedData = Object.keys(data.default).map((key) => {
+    if(!this.items)
+    this.items = Object.keys(data.default).map((key) => {
         return data.default[key];
       });
     //return JSON.stringify(out);
-    return this.mappedData.filter(item =>{
+    return this.items.filter(item =>{
         return item.currencyData[this.currency] && item.currencyData[this.currency].minimumStake;
     }).map((item) => {
         let currencyData =  {...item.currencyData[this.currency]} ;

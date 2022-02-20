@@ -15,11 +15,7 @@ describe("ItemSection", () => {
         playURL: "/games/luckywizard/play",
         image: "/cms/5bab9d950eb3580fac83392e/Icon_320and250_LuckyWizard.jpg",
         detailURL: "/games/luckywizard",
-        currencyData: {
-          EUR: {
-            minimumStake: 0.1
-          }
-        },
+        currencyData: { name: "EUR", minimumStake: 0.1 },
         volatility: ["High"],
         provider: ["RedTiger"]
       },
@@ -29,11 +25,7 @@ describe("ItemSection", () => {
         playURL: "/games/greekgods/play",
         image: "/cms/5de91d2a91253e002efe72f7/icon-320and250_GreekGods.jpg",
         detailURL: "/games/greekgods",
-        currencyData: {
-          EUR: {
-            minimumStake: 0.25
-          }
-        },
+        currencyData: { name: "EUR", minimumStake: 0.25 },
         volatility: ["High"],
         provider: ["Pragmatic"]
       }
@@ -45,7 +37,7 @@ describe("ItemSection", () => {
       expect(container.textContent).toMatch(item.displayName);
       expect(container.textContent).toMatch(item.provider[0]);
       expect(container.textContent).toMatch(
-        "" + item.currencyData.EUR.minimumStake
+        "" + item.currencyData.minimumStake
       );
     }
   });
