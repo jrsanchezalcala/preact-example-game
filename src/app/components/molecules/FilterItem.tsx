@@ -36,4 +36,4 @@ export const FilterItem: FunctionComponent<FilterItemProps> = ({
     </div>
   );
 };
-register(FilterItem, "x-filter-item", ["text", "value", "mark"]);
+register(FilterItem, "x-filter-item", ["onClick","text", "value", "mark"]);

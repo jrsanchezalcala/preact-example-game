@@ -4,7 +4,7 @@ import { render, fireEvent, screen } from "@testing-library/preact";
 import "../src/app/componentsImports";
 
 describe("Filter", () => {
-  test("should display title tag", () => {
+  test("should display filter and fire event change", () => {
     const handleChange = jest.fn();
 
     const { container } = render(

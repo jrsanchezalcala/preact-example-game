@@ -1,4 +1,4 @@
-import { Fragment, FunctionComponent, JSX } from "preact";
+import {  h,FunctionComponent, JSX } from "preact";
 import register from "preact-custom-element";
 import { FilterItemProps } from "../molecules/FilterItem";
 import { DataService } from "../../service/DataService";
@@ -51,4 +51,4 @@ export const TopSection: FunctionComponent<TopSectionProps> = ({
     </div>
   );
 };
-register(TopSection, "x-top-section");
+register(TopSection, "x-top-section",["title"]);
