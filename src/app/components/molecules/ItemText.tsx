@@ -1,10 +1,4 @@
-import {
-  Fragment,
-  FunctionalComponent,
-  FunctionComponent,
-  h,
-  JSX,
-} from 'preact';
+import { FunctionalComponent, h, JSX } from 'preact';
 import register from 'preact-custom-element';
 
 declare global {
@@ -24,7 +18,7 @@ export type ItemTextProps = {
 export const ItemText: FunctionalComponent<ItemTextProps> = ({
   provider,
   price,
-  title,
+  title
 }): JSX.Element => {
   return (
     <div className='item-text'>

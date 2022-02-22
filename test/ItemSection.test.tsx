@@ -4,7 +4,6 @@ import { render, screen } from "@testing-library/preact";
 
 import "../src/app/componentsImports";
 
-import { Item } from "../src/app/components/molecules/Item";
 import { DataService } from "../src/app/service/DataService";
 import { ItemData } from "../src/interfaces/ItemData";
 

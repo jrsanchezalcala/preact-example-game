@@ -1,12 +1,12 @@
-import { Currency } from "./Currency";
+import { Currency } from './Currency';
 
 export interface ItemData {
-  name: string;
-  displayName: string;
-  playURL: string;
-  image: string;
-  detailURL: string;
+  name: string
+  displayName: string
+  playURL: string
+  image: string
+  detailURL: string
   currencyData: Record<string,Currency>
-  provider?: [string];
-  volatility?: [string];
+  provider?: [string]
+  volatility?: [string]
 }

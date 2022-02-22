@@ -1,7 +1,6 @@
 import { Subject } from 'rxjs';
 import * as data from '../../mocks/test-data.js';
-import { Currency } from "../../interfaces/Currency";
-import { Item } from "../../interfaces/Item";
+import { Item } from '../../interfaces/Item';
 import { ItemData } from '../../interfaces/ItemData.js';
 
 const sortDataFunctions = {
@@ -39,7 +38,7 @@ export class DataService {
 
 
   static async request(from, to) : Promise<Item[]> {
-      //TODO - to replace with fetch data
+      // TODO - to replace with fetch data
     if (!this.items) {
       this.items = Object.keys(data.default).map((key) => {
         return data.default[key] as ItemData;
@@ -49,8 +48,8 @@ export class DataService {
     return this.items
       .filter((item) => {
         return (
-          item.currencyData[this.currency] as Currency &&
-          item.currencyData[this.currency].minimumStake as number
+          item.currencyData[this.currency] &&
+          item.currencyData[this.currency].minimumStake
         );
       })
       .map((item) => {
@@ -79,13 +78,14 @@ export class DataService {
     return items;
   }
 
-  static async setFilter(filter: (item: Item) => void) {
+  static async setFilter(filter: (item: Item) => void) : Promise<Item[]> {
     this.filterFunction = filter;
     const items = await this.request(this.index, this.numItems);
     DataService.onChange.next(items);
+    return items;
   }
 
-  static async setOrder(order: (itemA: Item, itemB: Item) => number | string) {
+  static async setOrder(order: (itemA: Item, itemB: Item) => number | string) : Promise<Item[]> {
     if (typeof order === 'string') {
       this.orderFunction = sortDataFunctions[order] as (
         itemA: Item,
@@ -96,6 +96,7 @@ export class DataService {
     }
     const items = await this.request(this.index, this.numItems);
     DataService.onChange.next(items);
+    return items;
   }
 
   static setCurrency(currency : string) :void {

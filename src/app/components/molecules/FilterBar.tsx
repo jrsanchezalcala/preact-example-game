@@ -19,9 +19,10 @@ export const FilterBar: FunctionComponent<{
   title: string
   open: string
   onClick
-}> = ({ title, open, children, onClick }): JSX.Element => {
+}> = ({ title, open, onClick }): JSX.Element => {
+  const isOpen = open === 'true';
   return (
-    <div className={`filter-bar ${open ? 'open' : ''}`} onClick={onClick}>
+    <div className={`filter-bar ${isOpen ? 'open' : ''}`} onClick={onClick}>
       <span className='icon'>
         <svg
           width='15px'

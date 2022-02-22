@@ -21,11 +21,11 @@ export interface FilterItemProps {
 export const FilterItem: FunctionComponent<FilterItemProps> = ({
   text,
   value,
-  mark,
+  mark
 }): JSX.Element => {
   const ref = useRef(null);
 
-  if (typeof mark === 'string' && mark == 'false') {
+  if (typeof mark === 'string' && mark === 'false') {
     mark = false;
   }
 
