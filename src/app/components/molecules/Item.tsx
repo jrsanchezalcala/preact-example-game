@@ -34,17 +34,17 @@ export const ItemDisplay: FunctionalComponent<ItemProps> = ({
   const data: Item = getItem();
   return (
     <div className="item">
-      <div className="item-col">
+      <div className="item-col image-col">
         <x-item-image text={data.displayName} src={data.image} />
       </div>
-      <div className="item-col">
+      <div className="item-col text-col">
         <x-item-text
           price={getPriceText(data, "EUR")}
           provider={data?.provider ? data?.provider.join(", ") : "No provider"}
           title={data?.displayName || ""}
         />
       </div>
-      <div className="item-col">
+      <div className="item-col button-col">
         <x-button
           text="PLAY"
           onClick={() => {
