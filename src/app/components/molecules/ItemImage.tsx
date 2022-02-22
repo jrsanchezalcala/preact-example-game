@@ -1,17 +1,17 @@
-import { FunctionalComponent, h, JSX } from "preact";
-import register from "preact-custom-element";
+import { FunctionalComponent, h, JSX } from 'preact';
+import register from 'preact-custom-element';
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-item-image"]: ItemImageProps;
+      ['x-item-image']: ItemImageProps
     }
   }
 }
 
 export type ItemImageProps = {
-  text: string;
-  src: string;
+  text: string
+  src: string
 };
 
 export const ItemImage: FunctionalComponent<ItemImageProps> = ({
@@ -19,12 +19,12 @@ export const ItemImage: FunctionalComponent<ItemImageProps> = ({
   src
 }): JSX.Element => {
   return (
-    <div className="item-image">
-      <span class="icon">
-        <img src="info.svg" width="15" height="15" />
+    <div className='item-image'>
+      <span class='icon'>
+        <img src='info.svg' width='15' height='15' />
       </span>
-      <x-image url={src} description={text || ""} />
+      <x-image url={src} description={text || ''} />
     </div>
   );
 };
-register(ItemImage, "x-item-image", ["src", "text"]);
+register(ItemImage, 'x-item-image', ['src', 'text']);

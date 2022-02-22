@@ -1,18 +1,18 @@
-import { FunctionalComponent, h, JSX } from "preact";
-import register from "preact-custom-element";
-import { Item } from "../../../interfaces/Item";
-import { UtilService } from "../../service/UtilService";
+import { FunctionalComponent, h, JSX } from 'preact';
+import register from 'preact-custom-element';
+import { Item } from '../../../interfaces/Item';
+import { UtilService } from '../../service/UtilService';
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-item"]: ItemProps;
+      ['x-item']: ItemProps
     }
   }
 }
 export type ItemProps = {
-  item: Item | string;
-  key?: string;
+  item: Item | string
+  key?: string
 };
 
 const getPriceText = (item: Item, currency: string): string => {
@@ -29,24 +29,24 @@ export const ItemDisplay: FunctionalComponent<ItemProps> = ({
   item
 }): JSX.Element => {
   const getItem = (): Item => {
-    return typeof item === "string" ? (JSON.parse(item) as Item) : item;
+    return typeof item === 'string' ? (JSON.parse(item) as Item) : item;
   };
   const data: Item = getItem();
   return (
-    <div className="item">
-      <div className="item-col image-col">
+    <div className='item'>
+      <div className='item-col image-col'>
         <x-item-image text={data.displayName} src={data.image} />
       </div>
-      <div className="item-col text-col">
+      <div className='item-col text-col'>
         <x-item-text
-          price={getPriceText(data, "EUR")}
-          provider={data?.provider ? data?.provider.join(", ") : "No provider"}
-          title={data?.displayName || ""}
+          price={getPriceText(data, 'EUR')}
+          provider={data?.provider ? data?.provider.join(', ') : 'No provider'}
+          title={data?.displayName || ''}
         />
       </div>
-      <div className="item-col button-col">
+      <div className='item-col button-col'>
         <x-button
-          text="PLAY"
+          text='PLAY'
           onClick={() => {
             handlePlay(data);
           }}
@@ -55,4 +55,4 @@ export const ItemDisplay: FunctionalComponent<ItemProps> = ({
     </div>
   );
 };
-register(ItemDisplay, "x-item", ["item"]);
+register(ItemDisplay, 'x-item', ['item']);
