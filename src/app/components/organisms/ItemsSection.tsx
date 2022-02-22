@@ -1,19 +1,19 @@
-import { FunctionComponent, JSX, h } from "preact";
-import register from "preact-custom-element";
-import { useState, useEffect } from "preact/hooks";
-import { Item } from "../../../interfaces/Item";
-import { DataService } from "../../service/DataService";
+import { FunctionComponent, JSX, h } from 'preact';
+import register from 'preact-custom-element';
+import { useState, useEffect } from 'preact/hooks';
+import { Item } from '../../../interfaces/Item';
+import { DataService } from '../../service/DataService';
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-items-section"]: ItemsSectionProps;
+      ['x-items-section']: ItemsSectionProps
     }
   }
 }
 
 export interface ItemsSectionProps {
-  items?: Item[] | string;
+  items?: Item[] | string
 }
 
 export const ItemsSection: FunctionComponent<ItemsSectionProps> = (
@@ -26,7 +26,7 @@ export const ItemsSection: FunctionComponent<ItemsSectionProps> = (
   useEffect(() => {
     let listener;
     if (loader == false) {
-      console.log("items", items);
+      console.log('items', items);
       listener = () => {
         scrolleventListener(items);
       };
@@ -47,7 +47,9 @@ export const ItemsSection: FunctionComponent<ItemsSectionProps> = (
   }, []);
 
   const scrolleventListener = (items): void => {
-    if (loader || !hasMore) return;
+    if (loader || !hasMore) {
+return;
+}
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
     if (scrollTop + clientHeight >= scrollHeight - 5 && hasMore) {
@@ -57,15 +59,15 @@ export const ItemsSection: FunctionComponent<ItemsSectionProps> = (
     }
   };
   const addScroll = (listener): void => {
-    console.log("llama add");
-    window.addEventListener("scroll", listener, {
+    console.log('llama add');
+    window.addEventListener('scroll', listener, {
       passive: true
     });
   };
 
   const removeScroll = (listener): void => {
-    console.log("llama remove");
-    window.removeEventListener("scroll", listener);
+    console.log('llama remove');
+    window.removeEventListener('scroll', listener);
   };
   const getMore = async (items: Item[]): Promise<void> => {
     const moreitems: Item[] = await DataService.getMore();
@@ -84,7 +86,7 @@ export const ItemsSection: FunctionComponent<ItemsSectionProps> = (
   };
 
   return (
-    <div className="items-section">
+    <div className='items-section'>
       {items &&
         items.map((item: Item) => {
           return <x-item key={item.name} item={JSON.stringify(item)} />;
@@ -92,4 +94,4 @@ export const ItemsSection: FunctionComponent<ItemsSectionProps> = (
     </div>
   );
 };
-register(ItemsSection, "x-items-section", ["items"]);
+register(ItemsSection, 'x-items-section', ['items']);

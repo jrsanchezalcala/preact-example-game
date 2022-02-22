@@ -21,7 +21,7 @@ describe("ItemImage", () => {
       <x-item-image src={item.image} text={item.displayName} />
     );
     expect(container).toBeDefined();
-    const img = container.getElementsByTagName("img")[0];
+    const img = container.getElementsByTagName("img")[1];
     expect(img).toBeDefined();
     expect(img.src).toMatch(item.image);
     expect(img.alt).toMatch(item.displayName);

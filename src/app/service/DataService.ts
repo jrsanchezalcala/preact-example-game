@@ -73,19 +73,19 @@ export class DataService {
   }
 
   static async getMore(): Promise<Item[]> {
-    
-    this.index++;
-    console.log("llama more", this.index);
 
-    let from = this.index*this.numItems;
-    let to = from + this.numItems;
-    if(this.items.length >= from) {
+    this.index++;
+    console.log('llama more', this.index);
+
+    const from = this.index * this.numItems;
+    const to = from + this.numItems;
+    if (this.items.length >= from) {
     const items = await this.request(from,to);
     console.log(items);
- 
+
     return items;
     }
-    return []
+    return [];
   }
 
   static async setFilter(filter: (item: Item) => void) : Promise<Item[]> {

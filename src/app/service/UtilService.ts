@@ -19,7 +19,7 @@ static sanitizeUrl(url : string) : string {
   const urlSchemeRegex = /^([^:]+):/gm;
   const relativeFirstCharacters = ['.', '/'];
 
-  function _isRelativeUrlWithoutProtocol(url : string) : boolean{
+  function _isRelativeUrlWithoutProtocol(url : string) : boolean {
       return relativeFirstCharacters.indexOf(url[0]) > -1;
   }
 
