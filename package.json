@@ -8,9 +8,11 @@
 		"dev:watch": "npm run clean && webpack --config ./webpack.config.js --mode development --watch",
 		"start": "webpack serve --config ./webpack.config.js --mode development --host 0.0.0.0",
 		"clean": "rimraf ./dist",
-		"fix:lint": "npx eslint src --fix",
+		"lint:fix": "eslint -c .eslintrc.json ./src --ext .tsx --ext ts --fix",
+		"lint": "eslint -c .eslintrc.json ./src --ext .tsx --ext ts",
 		"test": "jest --verbose",
-		"test:debug": "node --inspect-brk ./node_modules/jest/bin/jest --verbose"
+		"test:debug": "node --inspect-brk ./node_modules/jest/bin/jest --verbose",
+		"prettier-format": "prettier --config .prettierrc 'src/**/*.ts*' --write"
 	},
 	"repository": {
 		"type": "git",
@@ -37,7 +39,9 @@
 		"babel-polyfill": "^6.26.0",
 		"copy-webpack-plugin": "^8.0.0",
 		"css-loader": "^5.1.2",
-		"eslint": "^7.21.0",
+		"eslint": "^7.32.0",
+		"eslint-config-airbnb-typescript-prettier": "^5.0.0",
+		"eslint-config-preact": "^1.3.0",
 		"eslint-config-standard-preact": "^1.1.6",
 		"eslint-loader": "^4.0.2",
 		"eslint-plugin-optimize-regex": "^1.2.0",

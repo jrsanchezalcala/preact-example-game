@@ -15,10 +15,10 @@ export interface ButtonProps {
 
 export const Button: FunctionComponent<ButtonProps> = ({
   text,
-  onClick
+  onClick,
 }): JSX.Element => {
   return (
-    <button class='button' type='button' onClick={onClick}>
+    <button className='button' type='button' onClick={onClick}>
       {text}
     </button>
   );

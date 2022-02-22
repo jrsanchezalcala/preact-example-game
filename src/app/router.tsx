@@ -8,8 +8,8 @@ type TRoute = {
 
 const routes: Record<string, TRoute> = {
   '': {
-    content: () => <x-game />
-  }
+    content: () => <x-game />,
+  },
 };
 
 export function router(location: Location): JSX.Element {

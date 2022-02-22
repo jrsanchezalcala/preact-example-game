@@ -3,7 +3,7 @@ import {
   FunctionalComponent,
   FunctionComponent,
   h,
-  JSX
+  JSX,
 } from 'preact';
 import register from 'preact-custom-element';
 
@@ -24,10 +24,10 @@ export type ItemTextProps = {
 export const ItemText: FunctionalComponent<ItemTextProps> = ({
   provider,
   price,
-  title
+  title,
 }): JSX.Element => {
   return (
-    <div class='item-text'>
+    <div className='item-text'>
       <x-text text={provider} />
       <x-title tag='h5' text={title} />
       <x-text text={price} />

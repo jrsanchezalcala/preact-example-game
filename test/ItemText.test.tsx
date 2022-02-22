@@ -1,12 +1,12 @@
 import { h } from "preact";
 import { render, fireEvent, screen } from "@testing-library/preact";
 
-import { Item } from "../src/app/components/molecules/Item";
+import { Item } from "../src/interfaces/Item";
 import "../src/app/componentsImports";
 
 describe("ItemText", () => {
   test("should display item-text data", () => {
-    let item: Item = {
+    const item: Item = {
       name: "LuckyWizard",
       displayName: "Lucky Wizard",
       playURL: "/games/luckywizard/play",
@@ -17,10 +17,18 @@ describe("ItemText", () => {
       provider: ["RedTiger"]
     };
 
-    const { container } = render(<x-item-text provider={item.provider[0]} title={item.displayName} price={item.currencyData.minimumStake+""}  />);
+    const { container } = render(
+      <x-item-text
+        provider={item.provider[0]}
+        title={item.displayName}
+        price={String(item.currencyData.minimumStake)}
+      />
+    );
     expect(container).toBeDefined();
     expect(container.textContent).toMatch(item.provider[0]);
     expect(container.textContent).toMatch(item.displayName);
-    expect(container.textContent).toMatch(item.currencyData.minimumStake+"");
+    expect(container.textContent).toMatch(
+      String(item.currencyData.minimumStake)
+    );
   });
 });

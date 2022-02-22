@@ -1,5 +1,6 @@
 import { Fragment, FunctionalComponent, h, JSX } from "preact";
 import register from "preact-custom-element";
+import { Item } from "../../../interfaces/Item";
 
 declare global {
   namespace preact.createElement.JSX {
@@ -8,25 +9,6 @@ declare global {
     }
   }
 }
-export interface Item {
-  name: string;
-  displayName: string;
-  playURL: string;
-  image: string;
-  detailURL: string;
-  currencyData: Currency;
-  provider?: [string];
-  volatility?: [string];
-}
-
-export interface Currency {
-  name?: string;
-  simbol?: string;
-  noMob?: boolean;
-  noDesk?: boolean;
-  minimumStake: number;
-}
-
 export type ItemProps = {
   item: Item | string;
   key?: string;
@@ -46,30 +28,26 @@ export const ItemDisplay: FunctionalComponent<ItemProps> = ({
   };
   const data: Item = getItem();
   return (
-    <Fragment>
-      <div class="item">
-        <div class="item-col">
-          <x-item-image text={data.displayName} src={data.image} />
-        </div>
-        <div class="item-col">
-          <x-item-text
-            price={getPriceText(data, "EUR")}
-            provider={
-              data?.provider ? data?.provider.join(", ") : "No provider"
-            }
-            title={data?.displayName || ""}
-          />
-        </div>
-        <div class="item-col">
-          <x-button
-            text={"PLAY"}
-            onClick={() => {
-              handlePlay(data);
-            }}
-          />
-        </div>
+    <div className="item">
+      <div className="item-col">
+        <x-item-image text={data.displayName} src={data.image} />
       </div>
-    </Fragment>
+      <div className="item-col">
+        <x-item-text
+          price={getPriceText(data, "EUR")}
+          provider={data?.provider ? data?.provider.join(", ") : "No provider"}
+          title={data?.displayName || ""}
+        />
+      </div>
+      <div className="item-col">
+        <x-button
+          text="PLAY"
+          onClick={() => {
+            handlePlay(data);
+          }}
+        />
+      </div>
+    </div>
   );
 };
 register(ItemDisplay, "x-item", ["item"]);

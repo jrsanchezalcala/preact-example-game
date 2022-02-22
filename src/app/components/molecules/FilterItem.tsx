@@ -1,39 +1,39 @@
-import { FunctionComponent, h, JSX } from "preact";
-import register from "preact-custom-element";
-import { useRef } from "preact/hooks";
+import { FunctionComponent, h, JSX } from 'preact';
+import register from 'preact-custom-element';
+import { useRef } from 'preact/hooks';
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-filter-item"]: FilterItemProps;
+      ['x-filter-item']: FilterItemProps
     }
   }
 }
 
 export interface FilterItemProps {
-  text: string;
-  value: string;
-  mark?: boolean;
-  key?: string;
-  onClick?: (e) => void;
+  text: string
+  value: string
+  mark?: boolean
+  key?: string
+  onClick?: (e) => void
 }
 
 export const FilterItem: FunctionComponent<FilterItemProps> = ({
   text,
   value,
-  mark
+  mark,
 }): JSX.Element => {
   const ref = useRef(null);
 
-  if (typeof mark === "string" && mark == "false") {
+  if (typeof mark === 'string' && mark == 'false') {
     mark = false;
   }
 
   return (
-    <div ref={ref} class="filter-item">
+    <div ref={ref} className='filter-item'>
       <x-checkbox mark={mark} value={value} />
       <x-text text={text} />
     </div>
   );
 };
-register(FilterItem, "x-filter-item", ["onClick","text", "value", "mark"]);
+register(FilterItem, 'x-filter-item', ['onClick', 'text', 'value', 'mark']);

@@ -1,13 +1,15 @@
 import { h } from "preact";
 
-import { getByText, render, waitFor, screen } from "@testing-library/preact";
+import { render, screen } from "@testing-library/preact";
 
 import "../src/app/componentsImports";
 
 import { Item } from "../src/app/components/molecules/Item";
 import { DataService } from "../src/app/service/DataService";
+import { ItemData } from "../src/interfaces/ItemData";
+
 describe("ItemSection", () => {
-  /**test("should display items passing data by property", async () => {
+  /** test("should display items passing data by property", async () => {
     let items = [
       {
         name: "LuckyWizard",
@@ -15,7 +17,7 @@ describe("ItemSection", () => {
         playURL: "/games/luckywizard/play",
         image: "/cms/5bab9d950eb3580fac83392e/Icon_320and250_LuckyWizard.jpg",
         detailURL: "/games/luckywizard",
-        currencyData: 
+        currencyData:
           {name: "EUR",
           symbol : "€",
            minimumStake: 0.25
@@ -29,7 +31,7 @@ describe("ItemSection", () => {
         playURL: "/games/greekgods/play",
         image: "/cms/5de91d2a91253e002efe72f7/icon-320and250_GreekGods.jpg",
         detailURL: "/games/greekgods",
-        currencyData: 
+        currencyData:
            {name: "EUR",
            symbol : "€",
             minimumStake: 0.25
@@ -39,17 +41,17 @@ describe("ItemSection", () => {
         provider: ["Pragmatic"]
       }
     ];
-   
+
     const { container } = render(<x-items-section />);
     expect(container).toBeDefined();
     container.items = items;
     for (let item of items) {
       await screen.findByText(item.displayName);
     }
-  });**/
+  });* */
 
   test("should display title tag", async () => {
-    let items = [
+    const items: ItemData[] = [
       {
         name: "LuckyWizard",
         displayName: "Lucky Wizard",
@@ -120,10 +122,12 @@ describe("ItemSection", () => {
     const { container } = render(<x-items-section />);
     expect(container).toBeDefined();
 
-    for (let item of items) {
+    for (const item of items) {
       await screen.findByText(item.displayName);
       await screen.findByText(item.provider[0]);
-      await screen.findByText(new RegExp(""+item.currencyData.EUR.minimumStake));
+      await screen.findByText(
+        new RegExp(String(item.currencyData.EUR.minimumStake))
+      );
     }
   });
 });

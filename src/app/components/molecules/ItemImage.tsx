@@ -16,12 +16,12 @@ export type ItemImageProps = {
 
 export const ItemImage: FunctionalComponent<ItemImageProps> = ({
   text,
-  src
+  src,
 }): JSX.Element => {
   return (
-    <div class='item-image'>
+    <div className='item-image'>
       <span icon='icon'>
-        <image src={'info.svg'} width='15' height='15' />
+        <image src='info.svg' width='15' height='15' />
       </span>
       <x-image url={src} description={text || ''} />
     </div>

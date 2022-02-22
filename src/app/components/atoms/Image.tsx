@@ -1,24 +1,25 @@
-import { FunctionComponent, h, JSX } from "preact";
-import register from "preact-custom-element";
+import { FunctionComponent, h, JSX } from 'preact';
+import register from 'preact-custom-element';
+
 export interface ImageProps {
-  url: string;
-  description?: string;
+  url: string
+  description?: string
 }
 
 declare global {
   namespace preact.createElement.JSX {
     interface IntrinsicElements {
-      ["x-image"]: ImageProps;
+      ['x-image']: ImageProps
     }
   }
 }
 // TODO - put in cofiguration file
-const host = "https://www.lottoland.com";
+const host = 'https://www.lottoland.com';
 
 export const Image: FunctionComponent<ImageProps> = ({
   url,
-  description
+  description,
 }): JSX.Element => {
-  return <img class="image" src={host + url} alt={description || ""} />;
+  return <img className='image' src={host + url} alt={description || ''} />;
 };
-register(Image, "x-image", ["url", "description"]);
+register(Image, 'x-image', ['url', 'description']);

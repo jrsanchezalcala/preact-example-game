@@ -1,9 +1,10 @@
-import {  h,FunctionComponent, JSX } from "preact";
+import { h, FunctionComponent, JSX } from "preact";
 import register from "preact-custom-element";
+import { useState } from "preact/hooks";
 import { FilterItemProps } from "../molecules/FilterItem";
 import { DataService } from "../../service/DataService";
-import { useState } from "preact/hooks";
-import { Item, ItemDisplay } from "../molecules/Item";
+import { ItemDisplay } from "../molecules/Item";
+import { Item } from "../../../interfaces/Item";
 
 declare global {
   namespace preact.createElement.JSX {
@@ -41,14 +42,14 @@ export const TopSection: FunctionComponent<TopSectionProps> = ({
     }
   };
   return (
-    <div class="top-section">
+    <div className="top-section">
       <x-title text={title} />
       <x-filter
-        title={"SORT GAMES"}
+        title="SORT GAMES"
         items={JSON.stringify(filterItems)}
         onChange={handleChange}
       />
     </div>
   );
 };
-register(TopSection, "x-top-section",["title"]);
+register(TopSection, "x-top-section", ["title"]);

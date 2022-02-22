@@ -16,7 +16,7 @@ export interface TitleProps {
 
 export const Title: FunctionComponent<TitleProps> = ({
   text,
-  tag = 'h1'
+  tag = 'h1',
 }): JSX.Element => {
   const Tag = tag as keyof JSX.IntrinsicElements;
   // @ts-ignore
