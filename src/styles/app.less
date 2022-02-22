@@ -142,6 +142,17 @@ x-items-section {
     .item-col {
       padding: @base_distance 0px;
     }
+
+    x-item-image {
+      .icon {
+        display: block;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        margin: @base_distance;
+      }
+    }
+
     x-title {
       .title {
         .font_title(17px);
@@ -158,11 +169,20 @@ x-items-section {
         font-size: 15px;
       }
     }
+
     @media screen and (min-width: @middle-width) {
       x-button {
         display: none;
       }
       .item:hover x-button {
+        display: block;
+      }
+      x-item-image {
+        .icon {
+          display: none;
+        }
+      }
+      .item:hover x-item-image .icon {
         display: block;
       }
     }
