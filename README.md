@@ -40,9 +40,7 @@ In root folder run `docker-compose -f docker-compose.start.yml up` to build the 
 
 Due to the time , i wont be able to do test for all classes and other things that i have to research more becouse when you work with webcomponents in preact ther are some things that you cant do like pass functions, objects or even the context. Anyway i put a list of pendings things to finish this project.
 
-- Finish test
-- Fix lint and modify rules more according for Preact Webcomponents
+- Finish test (almost)
 - Research if it is posible to replace Service for Context in preact (i tried to use context with webcomponents before with unsuccesfull result, but i should try again)
-- Do infinitum scroll feature
 
 I realised that Preact library for webcomponents is usefull for webcomponents that are simple , for bigger components i think is not the best solution to use Preact Webcomponent. It will need more integrations in order to work easier with it.
