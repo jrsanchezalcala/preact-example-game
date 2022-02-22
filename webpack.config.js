@@ -41,7 +41,7 @@ module.exports = (env, args) => {
 		module: {
 			rules: [
 				{
-					test: /\.(ts|tsx))$/,
+					test: /\.(ts|tsx)$/,
 					// eslint
 					enforce: 'pre',
 					use: [
