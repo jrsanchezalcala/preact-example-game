@@ -15,6 +15,8 @@ static sanitizeUrl(url : string) : string {
   }
 
   const invalidProtocolRegex = /^(%20|\s)*(javascript|data|vbscript)/im;
+  //added becouse tests fails
+  const invalidProtocolRegex2 = /\*(javascript|data|vbscript):/im;
   const ctrlCharactersRegex = /[^\x20-\x7EÀ-ž]/gim;
   const urlSchemeRegex = /^([^:]+):/gm;
   const relativeFirstCharacters = ['.', '/'];
@@ -37,6 +39,9 @@ static sanitizeUrl(url : string) : string {
   if (invalidProtocolRegex.test(urlScheme)) {
       return 'about:blank';
   }
+  if (invalidProtocolRegex2.test(urlScheme)) {
+    return 'about:blank';
+}
 
   return sanitizedUrl;
 }
