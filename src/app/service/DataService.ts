@@ -95,7 +95,7 @@ export class DataService {
     return items;
   }
 
-  static async setOrder(order: (itemA: Item, itemB: Item) => number | string) : Promise<Item[]> {
+  static async setOrder(order: ((itemA: Item, itemB: Item) => number) | string) : Promise<Item[]> {
     if (typeof order === 'string') {
       this.orderFunction = sortDataFunctions[order] as (
         itemA: Item,

@@ -11,7 +11,7 @@
 		"lint:fix": "eslint -c .eslintrc.json ./src --ext .tsx --ext ts --fix",
 		"lint": "eslint -c .eslintrc.json ./src --ext .tsx --ext ts",
 		"test": "jest --verbose",
-		"test:debug": "node --inspect-brk ./node_modules/jest/bin/jest --verbose",
+		"test:debug": "node --inspect-brk ./node_modules/jest/bin/jest DataService.test --verbose",
 		"prettier-format": "prettier --config .prettierrc 'src/**/*.ts*' --write"
 	},
 	"repository": {
